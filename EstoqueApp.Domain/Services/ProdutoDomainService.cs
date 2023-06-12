@@ -21,16 +21,19 @@ namespace EstoqueApp.Domain.Services
         public void Add(Produto model)
         {
             _unitOfWork?.ProdutoRepository.Add(model);
+            _unitOfWork?.SaveChanges();
         }
 
         public void Update(Produto model)
         {
             _unitOfWork?.ProdutoRepository.Update(model);
+            _unitOfWork?.SaveChanges();
         }
 
         public void Delete(Produto model)
         {
             _unitOfWork?.ProdutoRepository.Delete(model);
+            _unitOfWork?.SaveChanges();
         }
 
         public void Dispose()

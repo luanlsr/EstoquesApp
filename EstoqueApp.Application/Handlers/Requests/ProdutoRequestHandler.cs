@@ -20,11 +20,11 @@ namespace EstoqueApp.Application.Handlers.Requests
         IRequestHandler<ProdutoUpdateCommand, ProdutoQuery>,
         IRequestHandler<ProdutoDeleteCommand, ProdutoQuery>
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-        private readonly IProdutoDomainService _produtoDomainService;
+        private readonly IMediator? _mediator;
+        private readonly IMapper? _mapper;
+        private readonly IProdutoDomainService? _produtoDomainService;
 
-        public ProdutoRequestHandler(IMediator mediator, IMapper mapper, IProdutoDomainService produtoDomainService)
+        public ProdutoRequestHandler(IMediator? mediator, IMapper? mapper, IProdutoDomainService? produtoDomainService)
         {
             _mediator = mediator;
             _mapper = mapper;
@@ -34,17 +34,16 @@ namespace EstoqueApp.Application.Handlers.Requests
         public async Task<ProdutoQuery> Handle(ProdutoCreateCommand request, CancellationToken cancellationToken)
         {
             var produto = _mapper.Map<Produto>(request);
-
             _produtoDomainService.Add(produto);
 
             var produtoQuery = _mapper.Map<ProdutoQuery>(produto);
             await _mediator.Publish(
-                new ProdutoNotification
-                {
-                    Action = ActionNotification.Create,
-                    Produto = produtoQuery
-                }
-            );
+                    new ProdutoNotification
+                    {
+                        Action = ActionNotification.Create,
+                        Produto = produtoQuery
+                    }
+                );
 
             return produtoQuery;
         }
@@ -60,14 +59,13 @@ namespace EstoqueApp.Application.Handlers.Requests
             _produtoDomainService.Update(produto);
 
             var produtoQuery = _mapper.Map<ProdutoQuery>(produto);
-            //TODO Realizar o update do produto no domínio
             await _mediator.Publish(
-                new ProdutoNotification
-                {
-                    Action = ActionNotification.Update,
-                    Produto = produtoQuery
-                }
-            );
+                    new ProdutoNotification
+                    {
+                        Action = ActionNotification.Update,
+                        Produto = produtoQuery
+                    }
+                );
 
             return produtoQuery;
         }
@@ -75,16 +73,18 @@ namespace EstoqueApp.Application.Handlers.Requests
         public async Task<ProdutoQuery> Handle(ProdutoDeleteCommand request, CancellationToken cancellationToken)
         {
             var produto = _produtoDomainService.GetById(request.Id.Value);
+
             _produtoDomainService.Delete(produto);
 
             var produtoQuery = _mapper.Map<ProdutoQuery>(produto);
             await _mediator.Publish(
-                new ProdutoNotification
-                {
-                    Action = ActionNotification.Delete,
-                    Produto = produtoQuery
-                }
-            );
+                    new ProdutoNotification
+                    {
+                        Action = ActionNotification.Delete,
+                        Produto = produtoQuery
+                    }
+                );
+
             return produtoQuery;
         }
     }
