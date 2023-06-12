@@ -1,4 +1,5 @@
-﻿using EstoqueApp.Application.Interfaces.Services;
+﻿using EstoqueApp.Application.Interfaces.Persistences;
+using EstoqueApp.Application.Interfaces.Services;
 using EstoqueApp.Application.Models.Commands;
 using EstoqueApp.Application.Models.Queries;
 using MediatR;
@@ -13,9 +14,11 @@ namespace EstoqueApp.Application.Services
     public class ProdutoAppService : IProdutoAppServices
     {
         private readonly IMediator _mediator;
+        private readonly IProdutoPersistence _produtoPersistence;
 
-        public ProdutoAppService(IMediator mediator)
+        public ProdutoAppService(IProdutoPersistence produtoPersistence, IMediator mediator)
         {
+            _produtoPersistence = produtoPersistence;
             _mediator = mediator;
         }
 
@@ -36,12 +39,12 @@ namespace EstoqueApp.Application.Services
 
         public List<ProdutoQuery> GetAll()
         {
-            throw new NotImplementedException();
+            return _produtoPersistence.GetAll();
         }
 
         public ProdutoQuery GetById(Guid? id)
         {
-            throw new NotImplementedException();
+            return _produtoPersistence.GetById(id.Value);
         }
     }
 }

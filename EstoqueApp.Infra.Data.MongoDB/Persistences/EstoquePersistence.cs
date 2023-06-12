@@ -27,13 +27,13 @@ namespace EstoqueApp.Infra.Data.MongoDB.Persistences
         public void Update(EstoqueQuery model)
         {
             var filter = Builders<EstoqueQuery>.Filter.Eq(e => e.Id, model.Id);
-            _mongoDbContext.Estoques.DeleteOne(filter);
+            _mongoDbContext.Estoques.ReplaceOne(filter, model);
         }
 
         public void Delete(EstoqueQuery model)
         {
             var filter = Builders<EstoqueQuery>.Filter.Eq(e => e.Id, model.Id);
-            _mongoDbContext.Estoques.ReplaceOne(filter, model);
+            _mongoDbContext.Estoques.DeleteOne(filter);
         }
 
         public List<EstoqueQuery> GetAll()
@@ -44,7 +44,7 @@ namespace EstoqueApp.Infra.Data.MongoDB.Persistences
 
         public EstoqueQuery GetById(Guid key)
         {
-            var filter = Builders<EstoqueQuery>.Filter.Where(e => true);
+            var filter = Builders<EstoqueQuery>.Filter.Eq(e => e.Id, key);
             return _mongoDbContext.Estoques.Find(filter).FirstOrDefault();
         }
     }

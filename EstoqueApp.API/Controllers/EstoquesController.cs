@@ -1,11 +1,13 @@
 ﻿using EstoqueApp.Application.Interfaces.Services;
 using EstoqueApp.Application.Models.Commands;
 using EstoqueApp.Application.Models.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EstoqueApp.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EstoquesController : ControllerBase
@@ -21,22 +23,22 @@ namespace EstoqueApp.API.Controllers
         [ProducesResponseType(typeof (EstoqueQuery), 201)]
         public async Task<IActionResult> Post(EstoqueCreateCommand command)
         {
-            return StatusCode(201, await _estoqueAppServices?.Create(command));
+            return StatusCode(201, await _estoqueAppServices.Create(command));
         }
 
         [HttpPut]
         [ProducesResponseType(typeof(EstoqueQuery), 200)]
         public async Task<IActionResult> Put(EstoqueUpdateCommand command)
         {
-            return StatusCode(200, await _estoqueAppServices?.Update(command));
+            return StatusCode(200, await _estoqueAppServices.Update(command));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [ProducesResponseType(typeof(EstoqueQuery), 200)]
         public async Task<IActionResult> Delete(Guid? id)
         {
             var command = new EstoqueDeleteCommand { Id = id };
-            return StatusCode(200, await _estoqueAppServices?.Delete(command));
+            return StatusCode(200, await _estoqueAppServices.Delete(command));
         }
 
         [HttpGet]

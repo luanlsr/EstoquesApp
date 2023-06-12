@@ -20,32 +20,32 @@ namespace EstoqueApp.Domain.Services
 
         public void Add(Produto model)
         {
-            _unitOfWork?.ProdutoRepository?.Add(model);
+            _unitOfWork?.ProdutoRepository.Add(model);
         }
 
         public void Update(Produto model)
         {
-            _unitOfWork?.ProdutoRepository?.Update(model);
+            _unitOfWork?.ProdutoRepository.Update(model);
         }
 
         public void Delete(Produto model)
         {
-            _unitOfWork?.ProdutoRepository?.Delete(model);
+            _unitOfWork?.ProdutoRepository.Delete(model);
         }
 
         public void Dispose()
         {
-            _unitOfWork?.ProdutoRepository?.Dispose();
+            _unitOfWork?.ProdutoRepository.Dispose();
         }
 
         public List<Produto> GetAll()
         {
-            return _unitOfWork?.ProdutoRepository?.GetAll();
+            return _unitOfWork?.ProdutoRepository.GetAll();
         }
 
         public Produto? GetById(Guid id)
         {
-            return _unitOfWork?.ProdutoRepository?.GetById(id);
+            return _unitOfWork?.ProdutoRepository.GetById(id);
         }
     }
 }

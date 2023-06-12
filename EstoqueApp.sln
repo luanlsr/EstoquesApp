@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueApp.Domain", "Estoqu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueApp.Infra.Data.SqlServer", "EstoqueApp.Infra.Data.SqlServer\EstoqueApp.Infra.Data.SqlServer.csproj", "{FD9D3446-7258-4654-9D4C-F32C029A52B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueApp.Infra.Data.MongoDB", "EstoqueApp.Infra.Data.MongoDB\EstoqueApp.Infra.Data.MongoDB.csproj", "{5C76B342-BBE6-4D50-B7D5-E30E519C6057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EstoqueApp.Infra.Data.MongoDB", "EstoqueApp.Infra.Data.MongoDB\EstoqueApp.Infra.Data.MongoDB.csproj", "{5C76B342-BBE6-4D50-B7D5-E30E519C6057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueApp.Tests", "EstoqueApp.Tests\EstoqueApp.Tests.csproj", "{43CD4B38-DF54-4FE7-B23A-835713FD3117}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5C76B342-BBE6-4D50-B7D5-E30E519C6057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C76B342-BBE6-4D50-B7D5-E30E519C6057}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C76B342-BBE6-4D50-B7D5-E30E519C6057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CD4B38-DF54-4FE7-B23A-835713FD3117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CD4B38-DF54-4FE7-B23A-835713FD3117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CD4B38-DF54-4FE7-B23A-835713FD3117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CD4B38-DF54-4FE7-B23A-835713FD3117}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{654F3E3C-1F5F-40B5-8974-6419ACD8BB1E} = {4F1E0ED8-CEE5-451A-B0E1-D9306C3A710B}
 		{FD9D3446-7258-4654-9D4C-F32C029A52B6} = {601810B6-34FE-4168-819D-71845027AAAE}
 		{5C76B342-BBE6-4D50-B7D5-E30E519C6057} = {601810B6-34FE-4168-819D-71845027AAAE}
+		{43CD4B38-DF54-4FE7-B23A-835713FD3117} = {7C1BB23A-5CBE-4398-B18F-C6F9FA2F0A4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A2F88B9-B08F-49F1-A5BB-003CB53E2F1B}

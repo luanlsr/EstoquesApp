@@ -13,6 +13,7 @@ namespace EstoqueApp.Application.Models.Commands
     {
         [Required(ErrorMessage = "Campo obrigatório.")]
         public Guid? Id { get; set; }
+
         [MinLength(8, ErrorMessage = "Informe no mínimo {1} caracteres.")]
         [MaxLength(50, ErrorMessage = "Informe no máximo {1} caracteres.")]
         [Required(ErrorMessage = "Campo obrigatório.")]
